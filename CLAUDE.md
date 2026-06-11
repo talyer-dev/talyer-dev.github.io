@@ -120,9 +120,12 @@ corporate. If a line could appear on a generic SaaS template, rewrite it.
 
 ## Current TODOs
 
-1. Email capture form is front-end only (shows a fake success message).
-   Wire it to a real list — Buttondown, Mailchimp, a Google Form, or a
-   Cloudflare Worker + KV. Keep the "GG — you're in the lobby" success copy.
+1. ~~Email capture form is front-end only (shows a fake success message).
+   Wire it to a real list.~~ Done — the form posts to Formspree (endpoint
+   is in the form's `action` in `index.html`; AJAX with a no-JS fallback).
+   Submissions live in the dashboard at formspree.io. Free tier allows
+   50 submissions/month — if the waitlist outgrows that, upgrade or move
+   to a different backend. The "GG — you're in the lobby" copy stays.
 2. Founder cards use placeholder personas (The Builder, The Operator,
    The Closer, The Glue, plus the pos-2 open slot). Replace with real
    names/handles and personalized roasts when the team decides how

@@ -233,6 +233,10 @@
   .cta button:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--ink);}
   .cta button:active{transform:translateY(2px);box-shadow:0 2px 0 var(--ink);}
   .cta button:focus-visible{outline:3px solid #fff;outline-offset:3px;}
+  .cta .error{
+    display:none;font-family:var(--mono);font-size:14px;color:var(--sign-yellow);
+    margin:16px auto 0;max-width:520px;
+  }
   .cta .done{
     display:none;font-family:var(--mono);font-size:16px;color:#fff;
     background:rgba(0,0,0,.28);border:2px dashed rgba(255,255,255,.5);
@@ -388,11 +392,13 @@
   <div class="wrap reveal">
     <h2 id="cta-heading">We'll pick a lane soon.</h2>
     <p>Drop your email and you'll be the first to know what talyer.dev actually is — right after we do.</p>
-    <form id="queue-form" novalidate>
+    <form id="queue-form" action="https://formspree.io/f/xykadwnl" method="post" novalidate>
       <label for="email" style="position:absolute;left:-9999px;">Email address</label>
       <input id="email" type="email" name="email" placeholder="you@somewhere.com" required />
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true" autocomplete="off" />
       <button type="submit">Queue up</button>
     </form>
+    <p class="error" id="queue-error" role="alert">Server disconnected. Classic. Try again?</p>
     <div class="done" id="queue-done" role="status">
       GG — you're in the lobby. We'll ping you the moment we pick a lane.
       (No spam. We don't even have a product to spam you about.)
@@ -419,15 +425,32 @@
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // Email capture — front-end only for now.
-  // TODO: wire this up to your real list (Mailchimp, Buttondown, a Google Form, or your own API).
+  // Email capture — posts to Formspree (form also submits natively if JS is off).
   const form = document.getElementById('queue-form');
-  form.addEventListener('submit', (ev)=>{
+  const queueError = document.getElementById('queue-error');
+  form.addEventListener('submit', async (ev)=>{
     ev.preventDefault();
     const email = document.getElementById('email');
     if(!email.value || !email.checkValidity()){ email.focus(); return; }
-    form.style.display = 'none';
-    document.getElementById('queue-done').style.display = 'block';
+    const button = form.querySelector('button');
+    const buttonLabel = button.textContent;
+    button.disabled = true;
+    button.textContent = 'QUEUEING...';
+    queueError.style.display = 'none';
+    try{
+      const res = await fetch(form.action, {
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({email: email.value})
+      });
+      if(!res.ok) throw new Error('Formspree responded ' + res.status);
+      form.style.display = 'none';
+      document.getElementById('queue-done').style.display = 'block';
+    }catch(err){
+      button.disabled = false;
+      button.textContent = buttonLabel;
+      queueError.style.display = 'block';
+    }
   });
 </script>
 </body>
