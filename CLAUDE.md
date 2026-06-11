@@ -95,6 +95,8 @@ corporate. If a line could appear on a generic SaaS template, rewrite it.
   transparent), `logo-mark.png` (hex-bolt mark for small sizes), `og-image.png`
   (1200×630 social preview), `favicon-32.png`, `apple-touch-icon.png`.
   `favicon.ico` lives at repo root for legacy auto-discovery.
+- `robots.txt` and `sitemap.xml` at repo root. The sitemap lists every page
+  on the site — currently just `/`.
 
 ## Design system (use these, don't invent new tokens)
 
@@ -130,6 +132,7 @@ corporate. If a line could appear on a generic SaaS template, rewrite it.
 4. Optional: self-host fonts to remove the Google Fonts dependency.
 5. Future: a "Now Serving" / portfolio section listing small apps we ship,
    each as a work-order card in the talyer aesthetic. Not yet — just planned.
+   Every portfolio page that ships MUST be added to `sitemap.xml`.
 
 ## Conventions
 

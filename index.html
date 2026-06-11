@@ -3,17 +3,37 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>talyer.dev — the shop is open. the product is TBD.</title>
-<meta name="description" content="Four founders. Different backgrounds. One shared calendar event: Dota night. Something is being built at talyer.dev." />
+<title>talyer.dev — software studio in Manila (product TBD)</title>
+<meta name="description" content="Software studio in Manila. Four founders, zero product (so far), one non-negotiable calendar event: Dota night. The shop is open." />
+<link rel="canonical" href="https://talyer.dev/" />
+<meta name="theme-color" content="#1B232E" />
 <link rel="icon" href="/favicon.ico" sizes="48x48" />
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-<meta property="og:title" content="talyer.dev — the shop is open. the product is TBD." />
-<meta property="og:description" content="Four founders. Different backgrounds. One shared calendar event: Dota night. Something is being built at talyer.dev." />
+<meta property="og:title" content="talyer.dev — software studio in Manila (product TBD)" />
+<meta property="og:description" content="Software studio in Manila. Four founders, zero product (so far), one non-negotiable calendar event: Dota night. The shop is open." />
 <meta property="og:image" content="https://talyer.dev/assets/og-image.png" />
 <meta property="og:url" content="https://talyer.dev/" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "talyer.dev",
+  "url": "https://talyer.dev/",
+  "logo": "https://talyer.dev/assets/logo.png",
+  "foundingDate": "2026-06-11",
+  "foundingLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Manila",
+      "addressCountry": "PH"
+    }
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -246,10 +266,11 @@
 <div class="topstrip" aria-hidden="true"></div>
 
 <header>
-  <a class="brand" href="#"><img src="/assets/logo-mark.png" alt="" height="28" />talyer<span>.dev</span></a>
+  <a class="brand" href="#"><img src="/assets/logo-mark.png" alt="" width="28" height="28" />talyer<span>.dev</span></a>
   <span class="status-dot"><span class="dot" aria-hidden="true"></span> SHOP STATUS: OPEN-ISH</span>
 </header>
 
+<main>
 <!-- ============ HERO ============ -->
 <div class="hero">
   <div class="sign">
@@ -280,10 +301,10 @@
 </div>
 
 <!-- ============ THE FOUR-STACK ============ -->
-<section>
+<section aria-labelledby="crew-heading">
   <div class="wrap reveal">
     <div class="sec-label">The crew</div>
-    <h2>One four-stack.<br/>Zero idea. Full commit.</h2>
+    <h2 id="crew-heading">One four-stack.<br/>Zero idea. Full commit.</h2>
     <p class="lede">
       Every talyer has its mechanics. Ours don't fix cars — but everyone has a position,
       and after a few thousand games together, we know exactly who plays what.
@@ -331,10 +352,10 @@
 </section>
 
 <!-- ============ KNOWN / UNKNOWN ============ -->
-<section>
+<section aria-labelledby="report-heading">
   <div class="wrap reveal">
     <div class="sec-label">Scouting report</div>
-    <h2>What we know so far</h2>
+    <h2 id="report-heading">What we know so far</h2>
     <p class="lede">Full transparency — this is a workshop, not a magic show. Here's the honest state of the build.</p>
 
     <div class="board">
@@ -363,9 +384,9 @@
 </section>
 
 <!-- ============ CTA ============ -->
-<section class="cta">
+<section class="cta" aria-labelledby="cta-heading">
   <div class="wrap reveal">
-    <h2>We'll pick a lane soon.</h2>
+    <h2 id="cta-heading">We'll pick a lane soon.</h2>
     <p>Drop your email and you'll be the first to know what talyer.dev actually is — right after we do.</p>
     <form id="queue-form" novalidate>
       <label for="email" style="position:absolute;left:-9999px;">Email address</label>
@@ -378,6 +399,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <p class="define"><b>talyer</b> /tal·yér/ <i>n., Filipino</i> — a workshop where things get taken apart, figured out, and fixed. Eventually.</p>
