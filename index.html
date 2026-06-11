@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>talyer.dev — the shop is open. the product is TBD.</title>
+<meta name="description" content="Five founders. Different backgrounds. One shared calendar event: Dota night. Something is being built at talyer.dev." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --steel:      #1B232E;   /* corrugated night steel */
+    --steel-deep: #141A22;
+    --enamel:     #F2EBDA;   /* old enamel sign paint */
+    --sign-red:   #C8372B;   /* vulcanizing-shop red */
+    --sign-yellow:#F2B33D;   /* warning-stripe yellow */
+    --sign-blue:  #3D7BC4;   /* jeepney blue */
+    --ink:        #1A1410;   /* hand-painted lettering */
+    --display: 'Anton', 'Arial Narrow', Impact, sans-serif;
+    --body: 'Space Grotesk', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--body);
+    color:var(--enamel);
+    background-color:var(--steel);
+    /* corrugated steel */
+    background-image:
+      repeating-linear-gradient(90deg,
+        rgba(255,255,255,.035) 0px, rgba(255,255,255,.035) 3px,
+        rgba(0,0,0,.18) 3px, rgba(0,0,0,.18) 7px,
+        transparent 7px, transparent 46px),
+      linear-gradient(180deg, #222C3A 0%, var(--steel) 38%, var(--steel-deep) 100%);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--sign-yellow);color:var(--ink);}
+  a{color:var(--sign-yellow);}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- top strip ---------- */
+  .topstrip{
+    font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+    background:repeating-linear-gradient(-45deg, var(--sign-yellow) 0 16px, var(--ink) 16px 32px);
+    color:var(--ink);text-align:center;padding:0;height:10px;
+  }
+  header{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 24px;max-width:1060px;margin:0 auto;
+    font-family:var(--mono);font-size:13px;letter-spacing:.06em;
+  }
+  header .brand{color:var(--enamel);text-decoration:none;font-weight:600;}
+  header .brand span{color:var(--sign-yellow);}
+  header .status-dot{display:inline-flex;align-items:center;gap:8px;color:#9fb0c2;}
+  .dot{width:9px;height:9px;border-radius:50%;background:#5BBF6B;box-shadow:0 0 8px #5BBF6B;animation:pulse 2.4s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+  /* ---------- hero: the hand-painted sign ---------- */
+  .hero{padding:64px 24px 80px;text-align:center;}
+  .sign{
+    display:inline-block;
+    background:var(--enamel);
+    color:var(--ink);
+    padding:34px 46px 30px;
+    transform:rotate(-1.4deg);
+    border:5px solid var(--ink);
+    box-shadow:
+      0 4px 0 rgba(0,0,0,.45),
+      0 22px 50px rgba(0,0,0,.55),
+      inset 0 0 0 3px var(--enamel),
+      inset 0 0 0 6px var(--sign-red);
+    position:relative;
+    max-width:680px;
+  }
+  /* rusty bolt heads */
+  .sign::before,.sign::after{
+    content:"";position:absolute;width:14px;height:14px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #cfc6ae, #6b5d43 70%);
+    box-shadow:0 1px 2px rgba(0,0,0,.6);
+    top:10px;
+  }
+  .sign::before{left:12px;} .sign::after{right:12px;}
+  .sign .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:.32em;
+    color:var(--sign-red);font-weight:600;margin-bottom:8px;text-transform:uppercase;
+  }
+  .sign h1{
+    font-family:var(--display);
+    font-size:clamp(56px,11vw,118px);
+    line-height:.92;
+    letter-spacing:.01em;
+    text-transform:uppercase;
+    color:var(--sign-red);
+    text-shadow:3px 3px 0 var(--sign-yellow), 6px 6px 0 rgba(0,0,0,.18);
+  }
+  .sign h1 small{
+    display:block;font-size:clamp(20px,3.4vw,34px);
+    color:var(--ink);text-shadow:none;letter-spacing:.18em;margin-top:6px;
+  }
+  .services{
+    margin-top:18px;border-top:3px solid var(--ink);padding-top:14px;
+    font-family:var(--mono);font-size:clamp(12px,1.8vw,14px);font-weight:600;
+    display:flex;justify-content:center;gap:22px;flex-wrap:wrap;color:var(--ink);
+  }
+  .services .no{color:var(--sign-red);text-decoration:line-through;text-decoration-thickness:2px;}
+  .hero p.tagline{
+    margin:42px auto 0;max-width:560px;font-size:clamp(17px,2.4vw,21px);color:#C9D3DF;
+  }
+  .hero p.tagline strong{color:var(--sign-yellow);font-weight:700;}
+
+  /* ---------- match HUD status ---------- */
+  .hud{
+    margin:0 auto;max-width:920px;
+    border:1px solid rgba(242,235,218,.18);
+    background:rgba(10,14,19,.55);
+    backdrop-filter:blur(2px);
+    font-family:var(--mono);
+    display:grid;grid-template-columns:repeat(4,1fr);
+  }
+  .hud div{padding:18px 14px;border-right:1px solid rgba(242,235,218,.12);}
+  .hud div:last-child{border-right:none;}
+  .hud .k{font-size:11px;letter-spacing:.22em;color:#8FA0B4;text-transform:uppercase;}
+  .hud .v{font-size:15px;margin-top:6px;color:var(--enamel);font-weight:600;}
+  .hud .v em{font-style:normal;color:var(--sign-yellow);}
+
+  /* ---------- sections ---------- */
+  section{padding:88px 0;}
+  .sec-label{
+    font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--sign-yellow);display:flex;align-items:center;gap:14px;margin-bottom:14px;
+  }
+  .sec-label::after{content:"";height:1px;flex:1;background:rgba(242,179,61,.35);}
+  h2{
+    font-family:var(--display);text-transform:uppercase;letter-spacing:.02em;
+    font-size:clamp(34px,5.4vw,54px);line-height:1.02;margin-bottom:14px;
+  }
+  .lede{color:#B7C2CF;max-width:620px;font-size:17px;}
+
+  /* ---------- the five-stack ---------- */
+  .stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(186px,1fr));gap:14px;margin-top:44px;}
+  .card{
+    background:var(--enamel);color:var(--ink);
+    border:3px solid var(--ink);
+    padding:20px 18px 22px;position:relative;
+    box-shadow:0 6px 0 rgba(0,0,0,.4);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 14px 0 rgba(0,0,0,.4);}
+  .card .pos{
+    font-family:var(--display);font-size:44px;line-height:1;color:var(--sign-red);
+    text-shadow:2px 2px 0 var(--sign-yellow);
+  }
+  .card .role{
+    font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;margin:10px 0 4px;border-bottom:2px solid var(--ink);padding-bottom:8px;
+  }
+  .card .who{font-family:var(--display);font-size:19px;text-transform:uppercase;letter-spacing:.03em;margin:10px 0 6px;}
+  .card p{font-size:13.5px;line-height:1.5;color:#3d3428;}
+  .card .tag{
+    position:absolute;top:-11px;right:10px;background:var(--sign-blue);color:#fff;
+    font-family:var(--mono);font-size:10px;letter-spacing:.12em;padding:3px 8px;
+    border:2px solid var(--ink);transform:rotate(2deg);
+  }
+
+  /* ---------- known / unknown board ---------- */
+  .board{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:44px;}
+  .panel{border:1px solid rgba(242,235,218,.18);background:rgba(10,14,19,.5);padding:30px 28px;}
+  .panel h3{
+    font-family:var(--mono);font-size:13px;letter-spacing:.26em;text-transform:uppercase;
+    padding-bottom:14px;margin-bottom:18px;border-bottom:1px dashed rgba(242,235,218,.25);
+  }
+  .panel.yes h3{color:#5BBF6B;} .panel.tbd h3{color:var(--sign-red);}
+  .panel ul{list-style:none;}
+  .panel li{padding:10px 0;display:flex;gap:12px;font-size:15.5px;color:#CBD5E0;border-bottom:1px solid rgba(242,235,218,.07);}
+  .panel li:last-child{border-bottom:none;}
+  .panel li::before{font-family:var(--mono);font-weight:600;}
+  .panel.yes li::before{content:"✓";color:#5BBF6B;}
+  .panel.tbd li::before{content:"?";color:var(--sign-red);}
+  .panel li span em{font-style:normal;color:var(--sign-yellow);}
+
+  /* ---------- CTA ---------- */
+  .cta{
+    background:var(--sign-red);
+    border-top:6px solid var(--ink);border-bottom:6px solid var(--ink);
+    text-align:center;
+  }
+  .cta h2{color:#fff;text-shadow:3px 3px 0 rgba(0,0,0,.25);}
+  .cta p{color:#FBE3DC;max-width:520px;margin:0 auto 34px;font-size:17px;}
+  .cta form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .cta input{
+    font-family:var(--mono);font-size:15px;padding:15px 18px;width:min(340px,86vw);
+    border:3px solid var(--ink);background:var(--enamel);color:var(--ink);outline-offset:3px;
+  }
+  .cta input:focus-visible{outline:3px solid var(--sign-yellow);}
+  .cta button{
+    font-family:var(--display);font-size:18px;letter-spacing:.08em;text-transform:uppercase;
+    padding:14px 30px;border:3px solid var(--ink);background:var(--sign-yellow);color:var(--ink);
+    cursor:pointer;box-shadow:0 5px 0 var(--ink);transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .cta button:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--ink);}
+  .cta button:active{transform:translateY(2px);box-shadow:0 2px 0 var(--ink);}
+  .cta button:focus-visible{outline:3px solid #fff;outline-offset:3px;}
+  .cta .done{
+    display:none;font-family:var(--mono);font-size:16px;color:#fff;
+    background:rgba(0,0,0,.28);border:2px dashed rgba(255,255,255,.5);
+    padding:18px 22px;max-width:520px;margin:0 auto;
+  }
+
+  /* ---------- footer ---------- */
+  footer{padding:48px 24px 64px;text-align:center;font-family:var(--mono);font-size:13px;color:#7E8FA3;}
+  footer .define{color:#AEBBCA;max-width:540px;margin:0 auto 18px;font-style:italic;}
+  footer .define b{color:var(--sign-yellow);font-style:normal;}
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+    .reveal{opacity:1;transform:none;}
+    html{scroll-behavior:auto;}
+  }
+  @media (max-width:720px){
+    .hud{grid-template-columns:1fr 1fr;}
+    .hud div:nth-child(2){border-right:none;}
+    .hud div:nth-child(1),.hud div:nth-child(2){border-bottom:1px solid rgba(242,235,218,.12);}
+    .board{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topstrip" aria-hidden="true"></div>
+
+<header>
+  <a class="brand" href="#">talyer<span>.dev</span></a>
+  <span class="status-dot"><span class="dot" aria-hidden="true"></span> SHOP STATUS: OPEN-ISH</span>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="sign">
+    <div class="eyebrow">Est. 2026 · Metro Manila</div>
+    <h1>Talyer<small>· DOT DEV ·</small></h1>
+    <div class="services">
+      <span>✓ SOFTWARE</span>
+      <span>✓ IDEAS</span>
+      <span>✓ BOLD CLAIMS</span>
+      <span class="no">VULCANIZING</span>
+    </div>
+  </div>
+  <p class="tagline">
+    Five founders. Different backgrounds. Zero overlap in skills, interests, or
+    sleep schedules — except <strong>one shared calendar event: Dota night.</strong>
+    Now we're building a startup. The product? Still in the drafting phase.
+  </p>
+</div>
+
+<!-- ============ HUD ============ -->
+<div class="wrap reveal">
+  <div class="hud" role="list" aria-label="Company status">
+    <div role="listitem"><div class="k">Game time</div><div class="v">Day <em>11</em> of startup</div></div>
+    <div role="listitem"><div class="k">Net worth</div><div class="v">One (1) domain</div></div>
+    <div role="listitem"><div class="k">K / D / A</div><div class="v">0 products / 0 pivots / <em>5 founders</em></div></div>
+    <div role="listitem"><div class="k">Current phase</div><div class="v">Drafting</div></div>
+  </div>
+</div>
+
+<!-- ============ THE FIVE-STACK ============ -->
+<section>
+  <div class="wrap reveal">
+    <div class="sec-label">The crew</div>
+    <h2>One five-stack.<br/>Zero idea. Full commit.</h2>
+    <p class="lede">
+      Every talyer has its mechanics. Ours don't fix cars — but everyone has a position,
+      and after a few thousand games together, we already know exactly who plays what.
+    </p>
+
+    <div class="stack">
+      <div class="card">
+        <span class="tag">PEACE REQUIRED</span>
+        <div class="pos">1</div>
+        <div class="role">Hard Carry</div>
+        <div class="who">The Builder</div>
+        <p>Writes the code. Needs 25 uninterrupted minutes to farm. Do not ping. Will solo-win this if you just let him scale.</p>
+      </div>
+      <div class="card">
+        <span class="tag">14TH IDEA TODAY</span>
+        <div class="pos">2</div>
+        <div class="role">Midlaner</div>
+        <div class="who">The Visionary</div>
+        <p>The idea guy. Has pitched fourteen startups this quarter. This is the one. Occasionally forgets to call missing.</p>
+      </div>
+      <div class="card">
+        <span class="tag">UNFAZED</span>
+        <div class="pos">3</div>
+        <div class="role">Offlaner</div>
+        <div class="who">The Operator</div>
+        <p>Handles money, paperwork, and bad news. Thrives while outnumbered. Has never once panicked. We've checked.</p>
+      </div>
+      <div class="card">
+        <span class="tag">IN YOUR DMs</span>
+        <div class="pos">4</div>
+        <div class="role">Roamer</div>
+        <div class="who">The Closer</div>
+        <p>Sales and partnerships. Appears out of nowhere, makes something happen, vanishes. You'll hear from him soon. Everyone does.</p>
+      </div>
+      <div class="card">
+        <span class="tag">REAL MVP</span>
+        <div class="pos">5</div>
+        <div class="role">Hard Support</div>
+        <div class="who">The Glue</div>
+        <p>Schedules the meetings. Buys the wards, the coffee, and the domain. The reason any of this exists at all.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KNOWN / UNKNOWN ============ -->
+<section>
+  <div class="wrap reveal">
+    <div class="sec-label">Scouting report</div>
+    <h2>What we know so far</h2>
+    <p class="lede">Full transparency — this is a workshop, not a magic show. Here's the honest state of the build.</p>
+
+    <div class="board">
+      <div class="panel yes">
+        <h3>Confirmed</h3>
+        <ul>
+          <li><span>The domain. You're looking at it. <em>Huge milestone.</em></span></li>
+          <li><span>The group chat. Extremely active. Mostly memes.</span></li>
+          <li><span>Dota night. Fridays. Non-negotiable. Investors will adjust.</span></li>
+          <li><span>The work ethic. Excellent — especially after the laning phase.</span></li>
+          <li><span>The name. <em>Talyer:</em> the neighborhood shop where things get fixed.</span></li>
+        </ul>
+      </div>
+      <div class="panel tbd">
+        <h3>Still drafting</h3>
+        <ul>
+          <li><span>The product.</span></li>
+          <li><span>The market.</span></li>
+          <li><span>The business model.</span></li>
+          <li><span>The pitch deck. (The Visionary says it's "90% done.")</span></li>
+          <li><span>Who actually plays mid.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="wrap reveal">
+    <h2>We'll pick a lane soon.</h2>
+    <p>Drop your email and you'll be the first to know what talyer.dev actually is — right after we do.</p>
+    <form id="queue-form" novalidate>
+      <label for="email" style="position:absolute;left:-9999px;">Email address</label>
+      <input id="email" type="email" name="email" placeholder="you@somewhere.com" required />
+      <button type="submit">Queue up</button>
+    </form>
+    <div class="done" id="queue-done" role="status">
+      GG — you're in the lobby. We'll ping you the moment we pick a lane.
+      (No spam. We don't even have a product to spam you about.)
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="define"><b>talyer</b> /tal·yér/ <i>n., Filipino</i> — a workshop where things get taken apart, figured out, and fixed. Eventually.</p>
+  <p>© 2026 talyer.dev · Built in Manila, between matches.</p>
+</footer>
+
+<script>
+  // Scroll-in reveals
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Email capture — front-end only for now.
+  // TODO: wire this up to your real list (Mailchimp, Buttondown, a Google Form, or your own API).
+  const form = document.getElementById('queue-form');
+  form.addEventListener('submit', (ev)=>{
+    ev.preventDefault();
+    const email = document.getElementById('email');
+    if(!email.value || !email.checkValidity()){ email.focus(); return; }
+    form.style.display = 'none';
+    document.getElementById('queue-done').style.display = 'block';
+  });
+</script>
+</body>
+</html>
