@@ -1,6 +1,6 @@
 # talyer.dev
 
-Landing page for **talyer.dev** — five founders, zero product, one shared
+Landing page for **talyer.dev** — four founders, zero product, one shared
 calendar event: Dota night.
 
 > **talyer** /tal·yér/ *n., Filipino* — a workshop where things get taken
@@ -40,5 +40,5 @@ GitHub Pages redeploys automatically in ~1 minute.
 
 ## Contributing
 
-You're one of five people on Earth with write access. You know who you are.
+You're one of four people on Earth with write access. You know who you are.
 Ping the group chat before redesigning anything during Dota night.

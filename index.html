@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>talyer.dev — the shop is open. the product is TBD.</title>
-<meta name="description" content="Five founders. Different backgrounds. One shared calendar event: Dota night. Something is being built at talyer.dev." />
+<meta name="description" content="Four founders. Different backgrounds. One shared calendar event: Dota night. Something is being built at talyer.dev." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -139,7 +139,7 @@
   }
   .lede{color:#B7C2CF;max-width:620px;font-size:17px;}
 
-  /* ---------- the five-stack ---------- */
+  /* ---------- the four-stack ---------- */
   .stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(186px,1fr));gap:14px;margin-top:44px;}
   .card{
     background:var(--enamel);color:var(--ink);
@@ -253,7 +253,7 @@
     </div>
   </div>
   <p class="tagline">
-    Five founders. Different backgrounds. Zero overlap in skills, interests, or
+    Four founders. Different backgrounds. Zero overlap in skills, interests, or
     sleep schedules — except <strong>one shared calendar event: Dota night.</strong>
     Now we're building a startup. The product? Still in the drafting phase.
   </p>
@@ -262,21 +262,22 @@
 <!-- ============ HUD ============ -->
 <div class="wrap reveal">
   <div class="hud" role="list" aria-label="Company status">
-    <div role="listitem"><div class="k">Game time</div><div class="v">Day <em>11</em> of startup</div></div>
+    <div role="listitem"><div class="k">Game time</div><div class="v">Day <em id="day-count">1</em> of startup</div></div>
     <div role="listitem"><div class="k">Net worth</div><div class="v">One (1) domain</div></div>
-    <div role="listitem"><div class="k">K / D / A</div><div class="v">0 products / 0 pivots / <em>5 founders</em></div></div>
+    <div role="listitem"><div class="k">K / D / A</div><div class="v">0 products / 0 pivots / <em>4 founders</em></div></div>
     <div role="listitem"><div class="k">Current phase</div><div class="v">Drafting</div></div>
   </div>
 </div>
 
-<!-- ============ THE FIVE-STACK ============ -->
+<!-- ============ THE FOUR-STACK ============ -->
 <section>
   <div class="wrap reveal">
     <div class="sec-label">The crew</div>
-    <h2>One five-stack.<br/>Zero idea. Full commit.</h2>
+    <h2>One four-stack.<br/>Zero idea. Full commit.</h2>
     <p class="lede">
       Every talyer has its mechanics. Ours don't fix cars — but everyone has a position,
-      and after a few thousand games together, we already know exactly who plays what.
+      and after a few thousand games together, we know exactly who plays what.
+      Well — four of us do. The fifth slot is open. LF1M.
     </p>
 
     <div class="stack">
@@ -288,11 +289,11 @@
         <p>Writes the code. Needs 25 uninterrupted minutes to farm. Do not ping. Will solo-win this if you just let him scale.</p>
       </div>
       <div class="card">
-        <span class="tag">14TH IDEA TODAY</span>
+        <span class="tag">APPLY WITHIN</span>
         <div class="pos">2</div>
-        <div class="role">Midlaner</div>
-        <div class="who">The Visionary</div>
-        <p>The idea guy. Has pitched fourteen startups this quarter. This is the one. Occasionally forgets to call missing.</p>
+        <div class="role">Open Slot</div>
+        <div class="who">Could Be You?</div>
+        <p>We queue as a four-stack and let fate fill mid. Requirements: at least one startup idea (we're fresh out), shows up on Fridays, calls missing occasionally.</p>
       </div>
       <div class="card">
         <span class="tag">UNFAZED</span>
@@ -343,7 +344,7 @@
           <li><span>The product.</span></li>
           <li><span>The market.</span></li>
           <li><span>The business model.</span></li>
-          <li><span>The pitch deck. (The Visionary says it's "90% done.")</span></li>
+          <li><span>The pitch deck. (That was supposed to be mid's job.)</span></li>
           <li><span>Who actually plays mid.</span></li>
         </ul>
       </div>
@@ -374,6 +375,12 @@
 </footer>
 
 <script>
+  // Day counter — repo founded 2026-06-11; day 1 = founding day, counted in visitor's local time.
+  const FOUNDED = new Date(2026, 5, 11);
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  document.getElementById('day-count').textContent = Math.round((today - FOUNDED) / 864e5) + 1;
+
   // Scroll-in reveals
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });

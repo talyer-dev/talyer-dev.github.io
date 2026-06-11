@@ -69,12 +69,13 @@ Strong success criteria let you loop independently. Weak criteria
 
 ## What this project is
 
-Landing page for talyer.dev — a pre-product startup by five friends in Manila
+Landing page for talyer.dev — a pre-product startup by four friends in Manila
 whose only common ground (so far) is playing Dota together. The site is a witty
 "coming soon" page that leans into:
 - "Talyer" = Filipino for a neighborhood auto-repair workshop
-- Dota culture: the five founders are presented as positions 1–5 (carry,
-  mid, offlane, roamer, hard support)
+- Dota culture: the four founders are presented across positions 1–5 (carry,
+  offlane, roamer, hard support), with position 2 (mid) as an open-slot
+  recruiting joke
 - Self-aware honesty: the product/market/business model are openly listed as TBD
 
 Tone for all copy: witty, self-deprecating, Filipino + Dota in-jokes. Never
@@ -115,12 +116,15 @@ corporate. If a line could appear on a generic SaaS template, rewrite it.
 1. Email capture form is front-end only (shows a fake success message).
    Wire it to a real list — Buttondown, Mailchimp, a Google Form, or a
    Cloudflare Worker + KV. Keep the "GG — you're in the lobby" success copy.
-2. Founder cards use placeholder personas (The Builder, The Visionary,
-   The Operator, The Closer, The Glue). Replace with real names/handles and
-   personalized roasts when the team decides how identifiable they want to be.
+2. Founder cards use placeholder personas (The Builder, The Operator,
+   The Closer, The Glue, plus the pos-2 open slot). Replace with real
+   names/handles and personalized roasts when the team decides how
+   identifiable they want to be.
 3. Add favicon + Open Graph/social preview image (a version of the painted
    sign would be ideal). OG tags not yet present in <head>.
 4. Optional: self-host fonts to remove the Google Fonts dependency.
+5. Future: a "Now Serving" / portfolio section listing small apps we ship,
+   each as a work-order card in the talyer aesthetic. Not yet — just planned.
 
 ## Conventions
 
