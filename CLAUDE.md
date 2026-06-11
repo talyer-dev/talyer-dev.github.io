@@ -90,6 +90,11 @@ corporate. If a line could appear on a generic SaaS template, rewrite it.
 - `CNAME` file in repo root contains `talyer.dev`. NEVER delete or modify it —
   GitHub Pages custom domain breaks without it. If you regenerate or move
   files, preserve it.
+- `/assets` — branding images, all derived from `logo-base.png` (the source;
+  regenerate the others from it if the logo changes): `logo.png` (full badge,
+  transparent), `logo-mark.png` (hex-bolt mark for small sizes), `og-image.png`
+  (1200×630 social preview), `favicon-32.png`, `apple-touch-icon.png`.
+  `favicon.ico` lives at repo root for legacy auto-discovery.
 
 ## Design system (use these, don't invent new tokens)
 
@@ -120,8 +125,8 @@ corporate. If a line could appear on a generic SaaS template, rewrite it.
    The Closer, The Glue, plus the pos-2 open slot). Replace with real
    names/handles and personalized roasts when the team decides how
    identifiable they want to be.
-3. Add favicon + Open Graph/social preview image (a version of the painted
-   sign would be ideal). OG tags not yet present in <head>.
+3. ~~Add favicon + Open Graph/social preview image.~~ Done — favicon set,
+   OG/Twitter tags, and social image shipped (see `/assets`).
 4. Optional: self-host fonts to remove the Google Fonts dependency.
 5. Future: a "Now Serving" / portfolio section listing small apps we ship,
    each as a work-order card in the talyer aesthetic. Not yet — just planned.

@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>talyer.dev — the shop is open. the product is TBD.</title>
 <meta name="description" content="Four founders. Different backgrounds. One shared calendar event: Dota night. Something is being built at talyer.dev." />
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<meta property="og:title" content="talyer.dev — the shop is open. the product is TBD." />
+<meta property="og:description" content="Four founders. Different backgrounds. One shared calendar event: Dota night. Something is being built at talyer.dev." />
+<meta property="og:image" content="https://talyer.dev/assets/og-image.png" />
+<meta property="og:url" content="https://talyer.dev/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -52,7 +61,8 @@
     padding:18px 24px;max-width:1060px;margin:0 auto;
     font-family:var(--mono);font-size:13px;letter-spacing:.06em;
   }
-  header .brand{color:var(--enamel);text-decoration:none;font-weight:600;}
+  header .brand{color:var(--enamel);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:9px;}
+  header .brand img{height:28px;width:auto;display:block;}
   header .brand span{color:var(--sign-yellow);}
   header .status-dot{display:inline-flex;align-items:center;gap:8px;color:#9fb0c2;}
   .dot{width:9px;height:9px;border-radius:50%;background:#5BBF6B;box-shadow:0 0 8px #5BBF6B;animation:pulse 2.4s infinite;}
@@ -236,7 +246,7 @@
 <div class="topstrip" aria-hidden="true"></div>
 
 <header>
-  <a class="brand" href="#">talyer<span>.dev</span></a>
+  <a class="brand" href="#"><img src="/assets/logo-mark.png" alt="" height="28" />talyer<span>.dev</span></a>
   <span class="status-dot"><span class="dot" aria-hidden="true"></span> SHOP STATUS: OPEN-ISH</span>
 </header>
 
