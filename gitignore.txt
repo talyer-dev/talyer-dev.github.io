@@ -1,0 +1,16 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Claude Code local settings (keep CLAUDE.md tracked, ignore local overrides)
+.claude/settings.local.json
+
+# Misc
+*.log
+node_modules/
