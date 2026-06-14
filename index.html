@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>talyer.dev — software studio in Manila (product TBD)</title>
-<meta name="description" content="Software studio in Manila. Four founders, zero product (so far), one non-negotiable calendar event: Dota night. The shop is open." />
+<meta name="description" content="talyer.dev builds websites and apps that fix real business problems. A small Manila team — tell us the problem, we build the fix." />
 <link rel="canonical" href="https://talyer.dev/" />
 <meta name="theme-color" content="#1B232E" />
 <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -21,6 +21,7 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "talyer.dev",
+  "description": "talyer.dev builds websites and apps that solve business problems, for small businesses in Manila and beyond.",
   "url": "https://talyer.dev/",
   "logo": "https://talyer.dev/assets/logo.png",
   "foundingDate": "2026-06-11",
@@ -195,6 +196,37 @@
     border:2px solid var(--ink);transform:rotate(2deg);
   }
 
+  /* ---------- what we do ---------- */
+  .explain{max-width:620px;}
+  .explain p{color:#C9D3DF;font-size:17px;margin-bottom:16px;}
+  .explain p:last-child{margin-bottom:0;}
+  .process{
+    list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;margin-top:44px;
+  }
+  .step{
+    background:var(--enamel);color:var(--ink);
+    border:3px solid var(--ink);
+    padding:22px 20px 30px;position:relative;
+    box-shadow:0 6px 0 rgba(0,0,0,.4);
+  }
+  /* rusty bolt heads, matching the sign */
+  .step::before,.step::after{
+    content:"";position:absolute;width:11px;height:11px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #cfc6ae, #6b5d43 70%);
+    box-shadow:0 1px 2px rgba(0,0,0,.6);bottom:11px;
+  }
+  .step::before{left:11px;} .step::after{right:11px;}
+  .step .pos{
+    font-family:var(--display);font-size:44px;line-height:1;color:var(--sign-red);
+    text-shadow:2px 2px 0 var(--sign-yellow);
+  }
+  .step .step-head{
+    font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.03em;
+    margin:8px 0;border-bottom:2px solid var(--ink);padding-bottom:10px;
+  }
+  .step p{font-size:13.5px;line-height:1.5;color:#3d3428;}
+
   /* ---------- known / unknown board ---------- */
   .board{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:44px;}
   .panel{border:1px solid rgba(242,235,218,.18);background:rgba(10,14,19,.5);padding:30px 28px;}
@@ -293,6 +325,37 @@
     Now we're building a startup. The product? Still in the drafting phase.
   </p>
 </div>
+
+<!-- ============ WHAT WE DO ============ -->
+<section aria-labelledby="what-heading">
+  <div class="wrap reveal">
+    <div class="sec-label">Service bay</div>
+    <h2 id="what-heading">What we do</h2>
+    <div class="explain">
+      <p>You know how a talyer fixes cars? We're a talyer for businesses — but instead of cars, we fix problems using websites and apps.</p>
+      <p>Maybe customers can't order from you online. Maybe you're doing something by hand that a computer could do in seconds. Maybe you just need a proper website. You tell us the problem; we build the thing that fixes it.</p>
+      <p>We're a small team, so you talk to the people actually building it — no middlemen, no jargon. We start by understanding your business, then we build.</p>
+    </div>
+
+    <ol class="process">
+      <li class="step">
+        <div class="pos">1</div>
+        <div class="step-head">Tell us the problem</div>
+        <p>In plain words. No tech talk needed.</p>
+      </li>
+      <li class="step">
+        <div class="pos">2</div>
+        <div class="step-head">We figure out what to build</div>
+        <p>We learn how your business works first.</p>
+      </li>
+      <li class="step">
+        <div class="pos">3</div>
+        <div class="step-head">You get the fix</div>
+        <p>A website or app that solves it.</p>
+      </li>
+    </ol>
+  </div>
+</section>
 
 <!-- ============ HUD ============ -->
 <div class="wrap reveal">
