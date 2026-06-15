@@ -133,9 +133,15 @@ corporate. If a line could appear on a generic SaaS template, rewrite it.
 3. ~~Add favicon + Open Graph/social preview image.~~ Done — favicon set,
    OG/Twitter tags, and social image shipped (see `/assets`).
 4. Optional: self-host fonts to remove the Google Fonts dependency.
-5. Future: a "Now Serving" / portfolio section listing small apps we ship,
-   each as a work-order card in the talyer aesthetic. Not yet — just planned.
-   Every portfolio page that ships MUST be added to `sitemap.xml`.
+5. ~~Future: a "Now Serving" / portfolio section listing small apps we ship,
+   each as a work-order card in the talyer aesthetic.~~ Done — the "Now serving"
+   section ("Work orders") sits after "What we do" in `index.html`. Each shipped
+   project is one `.workorder` card; to add another, duplicate the `<article
+   class="workorder">` block (a comment marks the spot) and bump the JOB number.
+   First entry is komikfind (JOB #001), which links to its live site at
+   `komikfind.talyer.dev`. Once there are several cards, this graduates to its
+   own `/work` page. Every portfolio page that ships (not the cards, but any
+   standalone page) MUST be added to `sitemap.xml`.
 
 ## Conventions
 
