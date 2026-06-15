@@ -451,7 +451,7 @@
   <div class="hud" role="list" aria-label="Company status">
     <div role="listitem"><div class="k">Game time</div><div class="v">Day <em id="day-count">1</em> of startup</div></div>
     <div role="listitem"><div class="k">Net worth</div><div class="v">One (1) domain</div></div>
-    <div role="listitem"><div class="k">K / D / A</div><div class="v">0 products / 0 pivots / <em>4 founders</em></div></div>
+    <div role="listitem"><div class="k">K / D / A</div><div class="v"><em id="shipped-count">1</em> shipped / 0 pivots / <em>4 founders</em></div></div>
     <div role="listitem"><div class="k">Current phase</div><div class="v">Drafting</div></div>
   </div>
 </div>
@@ -570,6 +570,9 @@
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   document.getElementById('day-count').textContent = Math.round((today - FOUNDED) / 864e5) + 1;
+
+  // Shipped count — derived from the Work orders cards, so adding JOB #002 updates the HUD automatically.
+  document.getElementById('shipped-count').textContent = document.querySelectorAll('.workorder').length;
 
   // Scroll-in reveals
   const io = new IntersectionObserver((entries)=>{
