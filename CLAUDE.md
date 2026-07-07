@@ -69,22 +69,37 @@ Strong success criteria let you loop independently. Weak criteria
 
 ## What this project is
 
-Landing page for talyer.dev — a pre-product startup by four friends in Manila
-whose only common ground (so far) is playing Dota together. The site is a witty
-"coming soon" page that leans into:
-- "Talyer" = Filipino for a neighborhood auto-repair workshop
-- Dota culture: the four founders are presented across positions 1–5 (carry,
-  offlane, roamer, hard support), with position 2 (mid) as an open-slot
-  recruiting joke
-- Self-aware honesty: the product/market/business model are openly listed as TBD
+Landing page for talyer.dev — an AI and data science consultancy in Manila,
+run by four friends who play Dota together. Businesses bring us a problem
+(forecasting, inventory/waste, customer insights, search/recommendation,
+manual data work) and we build the fix. The site leans into:
+- "Talyer" = Filipino for a neighborhood auto-repair workshop. The metaphor:
+  a shop you bring a broken problem to, except our tools are data and AI
+- Dota culture: the crew keeps positions 1–5. Joshua (position 1, carry) is
+  the founder/data scientist who does the actual work; positions 3–5 are "the
+  minions" (funny framing, but competent support/ops); position 2 (mid) is
+  reserved for "your problem", a client-facing twist on the old open-slot joke
+- Honest-new-shop positioning: we're new and hungry and say so as a trust
+  signal. No fake logos, ratings, or invented track record — one live demo
+  (komikfind) is the proof of capability instead
 
-Tone for all copy: witty, self-deprecating, Filipino + Dota in-jokes. Never
-corporate. If a line could appear on a generic SaaS template, rewrite it.
+Tone for all copy: witty, honest, Filipino + Dota in-jokes, but every section
+must make a potential CLIENT think "these people could solve my problem."
+Never corporate. If a line could appear on a generic SaaS template, rewrite
+it. No em dashes in site copy (removed site-wide — keep it that way).
 
 ## Stack & structure
 
 - Single static `index.html` — all CSS and JS inline. No build step, no
-  framework, no dependencies. Keep it that way unless there's a strong reason.
+  framework. Keep it that way unless there's a strong reason.
+- One runtime dependency: three.js r128 from the cdnjs CDN, lazy-loaded after
+  `load` (via requestIdleCallback) for the scroll-driven 3D backdrop of shop
+  hardware (hex nuts, bolts, washers, gears). It is skipped entirely under
+  prefers-reduced-motion or if WebGL init fails — the static painted
+  background is the fallback, so the page must always work without it.
+  r128 constraints: no OrbitControls, no CapsuleGeometry. Pixel ratio is
+  capped, rendering pauses when the tab is hidden, and mobile gets fewer
+  meshes — don't regress these.
 - Fonts via Google Fonts: Anton (display), Space Grotesk (body),
   IBM Plex Mono (HUD/labels). Fallbacks are defined; don't remove them.
 - `CNAME` file in repo root contains `talyer.dev`. NEVER delete or modify it —
@@ -120,28 +135,29 @@ corporate. If a line could appear on a generic SaaS template, rewrite it.
 
 ## Current TODOs
 
-1. ~~Email capture form is front-end only (shows a fake success message).
-   Wire it to a real list.~~ Done — the form posts to Formspree (endpoint
-   is in the form's `action` in `index.html`; AJAX with a no-JS fallback).
-   Submissions live in the dashboard at formspree.io. Free tier allows
-   50 submissions/month — if the waitlist outgrows that, upgrade or move
-   to a different backend. The "GG — you're in the lobby" copy stays.
-2. Founder cards use placeholder personas (The Builder, The Operator,
-   The Closer, The Glue, plus the pos-2 open slot). Replace with real
-   names/handles and personalized roasts when the team decides how
-   identifiable they want to be.
+1. ~~Email capture form (waitlist via Formspree).~~ Replaced — the site is now
+   client-facing, so the CTA is "bring us your problem": a `mailto:` link to
+   joshuac@talyer.dev with a prefilled subject. The old Formspree waitlist
+   form and its JS were removed with the repositioning. If a proper contact
+   form comes back, point its delivery at joshuac@talyer.dev.
+2. Crew cards: Joshua (pos 1) is named; positions 3–5 are still personas
+   (The Operator, The Closer, The Glue). Replace with real names/handles
+   and personalized roasts when the team decides how identifiable they
+   want to be.
 3. ~~Add favicon + Open Graph/social preview image.~~ Done — favicon set,
    OG/Twitter tags, and social image shipped (see `/assets`).
 4. Optional: self-host fonts to remove the Google Fonts dependency.
-5. ~~Future: a "Now Serving" / portfolio section listing small apps we ship,
-   each as a work-order card in the talyer aesthetic.~~ Done — the "Now serving"
-   section ("Work orders") sits after "What we do" in `index.html`. Each shipped
-   project is one `.workorder` card; to add another, duplicate the `<article
-   class="workorder">` block (a comment marks the spot) and bump the JOB number.
-   First entry is komikfind (JOB #001), which links to its live site at
-   `komikfind.talyer.dev`. Once there are several cards, this graduates to its
-   own `/work` page. Every portfolio page that ships (not the cards, but any
-   standalone page) MUST be added to `sitemap.xml`.
+5. ~~Future: a "Now Serving" / portfolio section.~~ Done — the "Now serving"
+   section ("Work orders") sits after "What we fix" in `index.html`. Each
+   shipped project is one `.workorder` card; to add another, duplicate the
+   `<article class="workorder">` block (a comment marks the spot) and bump
+   the JOB number. The HUD shipped-count is derived from the number of
+   `.workorder` cards, so it updates automatically. First entry is komikfind
+   (JOB #001, live at `komikfind.talyer.dev`), framed as the live demo that
+   proves we build ML/semantic-search systems — keep that client-facing
+   framing. Once there are several cards, this graduates to its own `/work`
+   page. Every portfolio page that ships (not the cards, but any standalone
+   page) MUST be added to `sitemap.xml`.
 
 ## Conventions
 

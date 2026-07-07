@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>talyer.dev — software studio in Manila (product TBD)</title>
-<meta name="description" content="talyer.dev builds websites and apps that fix real business problems. A small Manila team — tell us the problem, we build the fix." />
+<title>talyer.dev · AI and data science consultancy in Manila</title>
+<meta name="description" content="talyer.dev is a small AI and data science shop in Manila. Bring us a business problem: forecasting, inventory and waste, customer insights, search, or manual data work. We diagnose it honestly and build the fix." />
 <link rel="canonical" href="https://talyer.dev/" />
 <meta name="theme-color" content="#1B232E" />
 <link rel="icon" href="/favicon.ico" sizes="48x48" />
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-<meta property="og:title" content="talyer.dev — software studio in Manila (product TBD)" />
-<meta property="og:description" content="Software studio in Manila. Four founders, zero product (so far), one non-negotiable calendar event: Dota night. The shop is open." />
+<meta property="og:title" content="talyer.dev · AI and data science consultancy in Manila" />
+<meta property="og:description" content="A talyer for business problems. We fix forecasting, inventory, customer insights, search, and manual data work with AI and data science. New shop, hungry, honest. Diagnosis is free." />
 <meta property="og:image" content="https://talyer.dev/assets/og-image.png" />
 <meta property="og:url" content="https://talyer.dev/" />
 <meta property="og:type" content="website" />
@@ -21,9 +21,10 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "talyer.dev",
-  "description": "talyer.dev builds websites and apps that solve business problems, for small businesses in Manila and beyond.",
+  "description": "talyer.dev is an AI and data science consultancy in Manila. Businesses bring us problems like demand forecasting, inventory and waste prediction, customer insights, search and recommendation, and manual data work, and we build the fix.",
   "url": "https://talyer.dev/",
   "logo": "https://talyer.dev/assets/logo.png",
+  "email": "joshuac@talyer.dev",
   "foundingDate": "2026-06-11",
   "foundingLocation": {
     "@type": "Place",
@@ -32,7 +33,16 @@
       "addressLocality": "Manila",
       "addressCountry": "PH"
     }
-  }
+  },
+  "knowsAbout": [
+    "data science",
+    "machine learning",
+    "demand forecasting",
+    "inventory and waste prediction",
+    "customer analytics",
+    "semantic search and recommendation systems",
+    "data workflow automation"
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,6 +81,10 @@
   a{color:var(--sign-yellow);}
   .wrap{max-width:1060px;margin:0 auto;padding:0 24px;}
 
+  /* ---------- 3D backdrop (injected by JS; static page is the fallback) ---------- */
+  #bg3d{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block;}
+  .topstrip,header,main,footer{position:relative;z-index:1;}
+
   /* ---------- top strip ---------- */
   .topstrip{
     font-family:var(--mono);font-size:12px;letter-spacing:.08em;
@@ -105,6 +119,11 @@
       inset 0 0 0 6px var(--sign-red);
     position:relative;
     max-width:680px;
+    animation:settle .7s ease-out both;
+  }
+  @keyframes settle{
+    0%{opacity:0;transform:rotate(-1.4deg) translateY(-16px) scale(.985);}
+    100%{opacity:1;transform:rotate(-1.4deg);}
   }
   /* rusty bolt heads */
   .sign::before,.sign::after{
@@ -139,8 +158,24 @@
   .services .no{color:var(--sign-red);text-decoration:line-through;text-decoration-thickness:2px;}
   .hero p.tagline{
     margin:42px auto 0;max-width:560px;font-size:clamp(17px,2.4vw,21px);color:#C9D3DF;
+    animation:fadeup .7s ease-out .25s both;
   }
   .hero p.tagline strong{color:var(--sign-yellow);font-weight:700;}
+  .hero-ctas{margin-top:30px;animation:fadeup .7s ease-out .4s both;}
+  @keyframes fadeup{
+    0%{opacity:0;transform:translateY(14px);}
+    100%{opacity:1;transform:none;}
+  }
+  .hero-cta{
+    display:inline-block;text-decoration:none;
+    font-family:var(--display);font-size:19px;letter-spacing:.08em;text-transform:uppercase;
+    padding:15px 34px;border:3px solid var(--ink);background:var(--sign-yellow);color:var(--ink);
+    box-shadow:0 5px 0 var(--ink);transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .hero-cta:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--ink);}
+  .hero-cta:active{transform:translateY(2px);box-shadow:0 2px 0 var(--ink);}
+  .hero-cta:focus-visible{outline:3px solid var(--sign-blue);outline-offset:3px;}
+  .hero-note{margin-top:16px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:#8FA0B4;}
 
   /* ---------- match HUD status ---------- */
   .hud{
@@ -196,10 +231,23 @@
     border:2px solid var(--ink);transform:rotate(2deg);
   }
 
-  /* ---------- what we do ---------- */
+  /* ---------- what we fix ---------- */
   .explain{max-width:620px;}
   .explain p{color:#C9D3DF;font-size:17px;margin-bottom:16px;}
   .explain p:last-child{margin-bottom:0;}
+  .menu{
+    list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:14px;margin-top:38px;
+  }
+  .menu li{
+    border:1px solid rgba(242,235,218,.18);background:rgba(10,14,19,.5);
+    padding:18px 20px;
+  }
+  .menu .job-name{
+    display:block;font-family:var(--mono);font-weight:600;font-size:12.5px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--sign-yellow);margin-bottom:6px;
+  }
+  .menu li p{font-size:14.5px;color:#C9D3DF;}
   .process{
     list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:14px;margin-top:44px;
@@ -311,29 +359,21 @@
   }
   .cta h2{color:#fff;text-shadow:3px 3px 0 rgba(0,0,0,.25);}
   .cta p{color:#FBE3DC;max-width:520px;margin:0 auto 34px;font-size:17px;}
-  .cta form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-  .cta input{
-    font-family:var(--mono);font-size:15px;padding:15px 18px;width:min(340px,86vw);
-    border:3px solid var(--ink);background:var(--enamel);color:var(--ink);outline-offset:3px;
-  }
-  .cta input:focus-visible{outline:3px solid var(--sign-yellow);}
-  .cta button{
+  .cta .btn{
+    display:inline-block;text-decoration:none;
     font-family:var(--display);font-size:18px;letter-spacing:.08em;text-transform:uppercase;
     padding:14px 30px;border:3px solid var(--ink);background:var(--sign-yellow);color:var(--ink);
     cursor:pointer;box-shadow:0 5px 0 var(--ink);transition:transform .12s ease, box-shadow .12s ease;
   }
-  .cta button:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--ink);}
-  .cta button:active{transform:translateY(2px);box-shadow:0 2px 0 var(--ink);}
-  .cta button:focus-visible{outline:3px solid #fff;outline-offset:3px;}
-  .cta .error{
-    display:none;font-family:var(--mono);font-size:14px;color:var(--sign-yellow);
-    margin:16px auto 0;max-width:520px;
+  .cta .btn:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--ink);}
+  .cta .btn:active{transform:translateY(2px);box-shadow:0 2px 0 var(--ink);}
+  .cta .btn:focus-visible{outline:3px solid #fff;outline-offset:3px;}
+  .cta-alt{
+    margin:26px auto 0 !important;font-family:var(--mono);font-size:13.5px;
+    color:#FBE3DC;max-width:520px;
   }
-  .cta .done{
-    display:none;font-family:var(--mono);font-size:16px;color:#fff;
-    background:rgba(0,0,0,.28);border:2px dashed rgba(255,255,255,.5);
-    padding:18px 22px;max-width:520px;margin:0 auto;
-  }
+  .cta-alt a{color:#fff;}
+  .cta-alt a:focus-visible{outline:3px solid #fff;outline-offset:3px;}
 
   /* ---------- footer ---------- */
   footer{padding:48px 24px 64px;text-align:center;font-family:var(--mono);font-size:13px;color:#7E8FA3;}
@@ -343,9 +383,17 @@
   /* ---------- reveal on scroll ---------- */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease;}
   .reveal.in{opacity:1;transform:none;}
+  /* staggered children inside a revealed block */
+  .stag > *{opacity:0;transform:translateY(18px);transition:opacity .55s ease, transform .55s ease;}
+  .reveal.in .stag > *{opacity:1;transform:none;}
+  .reveal.in .stag > :nth-child(2){transition-delay:.09s;}
+  .reveal.in .stag > :nth-child(3){transition-delay:.18s;}
+  .reveal.in .stag > :nth-child(4){transition-delay:.27s;}
+  .reveal.in .stag > :nth-child(5){transition-delay:.36s;}
+  .reveal.in .stag > :nth-child(6){transition-delay:.45s;}
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
-    .reveal{opacity:1;transform:none;}
+    .reveal,.stag > *{opacity:1;transform:none;}
     html{scroll-behavior:auto;}
   }
   @media (max-width:720px){
@@ -363,7 +411,7 @@
 
 <header>
   <a class="brand" href="#"><img src="/assets/logo-mark.png" alt="" width="28" height="28" />talyer<span>.dev</span></a>
-  <span class="status-dot"><span class="dot" aria-hidden="true"></span> SHOP STATUS: OPEN-ISH</span>
+  <span class="status-dot"><span class="dot" aria-hidden="true"></span> SHOP STATUS: OPEN · TAKING JOBS</span>
 </header>
 
 <main>
@@ -373,45 +421,59 @@
     <div class="eyebrow">Est. 2026 · Metro Manila</div>
     <h1>Talyer<small>· DOT DEV ·</small></h1>
     <div class="services">
-      <span>✓ SOFTWARE</span>
-      <span>✓ IDEAS</span>
-      <span>✓ BOLD CLAIMS</span>
+      <span>✓ AI</span>
+      <span>✓ DATA SCIENCE</span>
+      <span>✓ HONEST DIAGNOSES</span>
       <span class="no">VULCANIZING</span>
     </div>
   </div>
   <p class="tagline">
-    Four founders. Different backgrounds. Zero overlap in skills, interests, or
-    sleep schedules. Except <strong>one shared calendar event: Dota night.</strong>
-    Now we're building a startup. The product? Still in the drafting phase.
+    A talyer is where you bring something broken and watch real work happen
+    until it's fixed. Same here, except you bring business problems and our
+    tools are <strong>data science and AI</strong>. We're a new shop, freshly
+    painted and hungry, which means your job gets the whole crew.
   </p>
+  <div class="hero-ctas">
+    <a class="hero-cta" href="#contact">Bring us your problem</a>
+    <p class="hero-note">Diagnosis is free. Jargon costs extra, so we skip it.</p>
+  </div>
 </div>
 
-<!-- ============ WHAT WE DO ============ -->
+<!-- ============ WHAT WE FIX ============ -->
 <section aria-labelledby="what-heading">
   <div class="wrap reveal">
     <div class="sec-label">Service bay</div>
-    <h2 id="what-heading">What we do</h2>
+    <h2 id="what-heading">What we fix</h2>
     <div class="explain">
-      <p>You know how a talyer fixes cars? We're a talyer for businesses. But instead of cars, we fix problems using websites and apps.</p>
-      <p>Maybe customers can't order from you online. Maybe you're doing something by hand that a computer could do in seconds. Maybe you just need a proper website. You tell us the problem; we build the thing that fixes it.</p>
-      <p>We're a small team, so you talk to the people actually building it. No middlemen, no jargon. We start by understanding your business, then we build.</p>
+      <p>You know how a talyer fixes cars? We're that, for businesses. Instead of engines, we fix problems using data science and AI.</p>
+      <p>Maybe you order stock by gut feel and throw half of it away. Maybe next month's sales are a mystery until they happen. Maybe someone in your office spends every Friday copying numbers from paper into a spreadsheet. All fixable, and usually the fix is smaller than you think.</p>
+      <p>You talk directly to the person building it. We learn how your business works first, then we tell you straight whether data can fix your problem. If it can't, we say so, and the opinion costs you nothing.</p>
     </div>
 
-    <ol class="process">
+    <ul class="menu stag" aria-label="Services menu">
+      <li><span class="job-name">Forecasting</span><p>Know what next month looks like before it happens.</p></li>
+      <li><span class="job-name">Inventory &amp; waste</span><p>Order what sells. Stop paying for what doesn't.</p></li>
+      <li><span class="job-name">Customer insights</span><p>Learn who buys, what they buy, and why they stop.</p></li>
+      <li><span class="job-name">Search &amp; recommendation</span><p>Help customers find the thing, then the next thing.</p></li>
+      <li><span class="job-name">Manual data work</span><p>That copy-paste job someone does every day? A machine can do it.</p></li>
+      <li><span class="job-name">Something weirder</span><p>Not sure it's a data problem? Describe the noise it makes. We'll tell you.</p></li>
+    </ul>
+
+    <ol class="process stag">
       <li class="step">
         <div class="pos">1</div>
         <div class="step-head">Tell us the problem</div>
-        <p>In plain words. No tech talk needed.</p>
+        <p>In plain words, like describing a weird engine noise to your mechanic.</p>
       </li>
       <li class="step">
         <div class="pos">2</div>
-        <div class="step-head">We figure out what to build</div>
-        <p>We learn how your business works first.</p>
+        <div class="step-head">We diagnose it</div>
+        <p>We look at your data and tell you straight: can AI fix this, what it takes, what it costs.</p>
       </li>
       <li class="step">
         <div class="pos">3</div>
-        <div class="step-head">You get the fix</div>
-        <p>A website or app that solves it.</p>
+        <div class="step-head">We build the fix</div>
+        <p>A working system in your hands, not a slide deck. We stick around to make sure it runs.</p>
       </li>
     </ol>
   </div>
@@ -422,9 +484,9 @@
   <div class="wrap reveal">
     <div class="sec-label">Now serving</div>
     <h2 id="work-heading">Work orders</h2>
-    <p class="lede">Real things we've built. More on the way.</p>
+    <p class="lede">We're new, so no borrowed logos and no invented testimonials. Instead, here's a live machine we built. Go poke it.</p>
 
-    <div class="worklist">
+    <div class="worklist stag">
       <!-- WORK ORDER CARD — duplicate this whole <article> block to add JOB #002. -->
       <article class="workorder">
         <div class="wo-head">
@@ -434,9 +496,9 @@
           <span class="wo-stamp">Shipped</span>
         </div>
         <div class="wo-body">
-          <p class="wo-plain">Describe the vibe of manga you're in the mood for, in plain words, and it finds the ones that match. By meaning, not just keywords.</p>
+          <p class="wo-plain">Type what you're in the mood for, in plain words, and it finds manga that match by meaning, not just keywords. It's our working demo: the same machine, pointed at your catalog, helps customers find products, parts, or documents.</p>
           <p class="wo-hood"><b>Under the hood:</b> React + Vite front end, FastAPI backend, Qdrant vector database, OpenAI text-embedding-3-small, deployed on GCP (Cloud Run and Firebase Hosting).</p>
-          <p class="wo-bit">Semantic search over manga metadata using vector embeddings.</p>
+          <p class="wo-bit">Semantic search over vector embeddings. Proof the machine works.</p>
           <a class="wo-cta" href="https://komikfind.talyer.dev" target="_blank" rel="noopener">Visit komikfind →</a>
           <small class="wo-attr">Data powered by MangaDex.</small>
         </div>
@@ -448,60 +510,61 @@
 
 <!-- ============ HUD ============ -->
 <div class="wrap reveal">
-  <div class="hud" role="list" aria-label="Company status">
-    <div role="listitem"><div class="k">Game time</div><div class="v">Day <em id="day-count">1</em> of startup</div></div>
-    <div role="listitem"><div class="k">Net worth</div><div class="v">One (1) domain</div></div>
-    <div role="listitem"><div class="k">K / D / A</div><div class="v"><em id="shipped-count">1</em> shipped / 0 pivots / <em>4 founders</em></div></div>
-    <div role="listitem"><div class="k">Current phase</div><div class="v">Drafting</div></div>
+  <div class="hud" role="list" aria-label="Shop status">
+    <div role="listitem"><div class="k">Game time</div><div class="v">Day <em id="day-count">1</em> open</div></div>
+    <div role="listitem"><div class="k">Queue</div><div class="v"><em>Short.</em> Great timing</div></div>
+    <div role="listitem"><div class="k">K / D / A</div><div class="v"><em id="shipped-count">1</em> shipped / 0 abandoned / <em>4 crew</em></div></div>
+    <div role="listitem"><div class="k">Current phase</div><div class="v">Hungry</div></div>
   </div>
 </div>
 
-<!-- ============ THE FOUR-STACK ============ -->
+<!-- ============ THE CREW ============ -->
 <section aria-labelledby="crew-heading">
   <div class="wrap reveal">
     <div class="sec-label">The crew</div>
-    <h2 id="crew-heading">One four-stack.<br/>Zero idea. Full commit.</h2>
+    <h2 id="crew-heading">One data scientist.<br/>Three loyal minions.</h2>
     <p class="lede">
-      Every talyer has its mechanics. Ours don't fix cars. But everyone has a position,
-      and after a few thousand games together, we know exactly who plays what.
-      Well, four of us do. The fifth slot is open. LF1M.
+      Every talyer has its mechanics. Ours has one who does the data science
+      and three who make sure the work gets scheduled, delivered, invoiced, and
+      followed up on. After a few thousand Dota games together, everyone knows
+      their position.
     </p>
 
-    <div class="stack">
+    <div class="stack stag">
       <div class="card">
-        <span class="tag">PEACE REQUIRED</span>
+        <span class="tag">DOES THE WORK</span>
         <div class="pos">1</div>
-        <div class="role">Hard Carry</div>
-        <div class="who">The Builder</div>
-        <p>Writes the code. Needs 25 uninterrupted minutes to farm. Do not ping. Will solo-win this if you just let him scale.</p>
+        <div class="role">Carry · Data Scientist</div>
+        <div class="who">Joshua</div>
+        <p>Founder and lead mechanic. Builds the models, writes the code, and answers your emails, sometimes all in the same hour. Give him a real problem and 25 uninterrupted minutes and he'll farm it into a solution.</p>
       </div>
       <div class="card">
-        <span class="tag">APPLY WITHIN</span>
+        <span class="tag">RESERVED</span>
         <div class="pos">2</div>
         <div class="role">Open Slot</div>
-        <div class="who">Could Be You?</div>
-        <p>We queue as a four-stack and let fate fill mid. Requirements: at least one startup idea (we're fresh out), shows up on Fridays, calls missing occasionally.</p>
+        <div class="who">Your Problem</div>
+        <p>Mid lane is reserved for whatever you bring in. A broken forecast, mystery churn, a spreadsheet held together by prayer. It becomes the star of the team the moment it arrives.</p>
       </div>
       <div class="card">
         <span class="tag">UNFAZED</span>
         <div class="pos">3</div>
-        <div class="role">Offlaner</div>
+        <div class="role">Offlane · Minion</div>
         <div class="who">The Operator</div>
-        <p>Handles money, paperwork, and bad news. Thrives while outnumbered. Has never once panicked. We've checked.</p>
+        <p>Handles money, paperwork, and bad news. Thrives while outnumbered. Has never once panicked, which is exactly who you want holding the invoice.</p>
       </div>
       <div class="card">
-        <span class="tag">IN YOUR DMs</span>
+        <span class="tag">IN YOUR INBOX</span>
         <div class="pos">4</div>
-        <div class="role">Roamer</div>
+        <div class="role">Roamer · Minion</div>
         <div class="who">The Closer</div>
-        <p>Sales and partnerships. Appears out of nowhere, makes something happen, vanishes. You'll hear from him soon. Everyone does.</p>
+        <p>Replies to your email frighteningly fast. Sets the meetings, chases the requirements, makes something happen. You'll hear from him. Everyone does.</p>
       </div>
       <div class="card">
         <span class="tag">REAL MVP</span>
         <div class="pos">5</div>
-        <div class="role">Hard Support</div>
+        <div class="role">Support · Minion</div>
         <div class="who">The Glue</div>
-        <p>Schedules the meetings. Buys the wards, the coffee, and the domain. The reason any of this exists at all.</p>
+        <p>Schedules everything, follows up on everything, and makes sure what we promised is what ships. Buys the coffee and the domain. The reason this exists.</p>
       </div>
     </div>
   </div>
@@ -512,27 +575,26 @@
   <div class="wrap reveal">
     <div class="sec-label">Scouting report</div>
     <h2 id="report-heading">What we know so far</h2>
-    <p class="lede">Full transparency: this is a workshop, not a magic show. Here's the honest state of the build.</p>
+    <p class="lede">Full transparency: we're new and we know it. Here's the honest state of the shop, because you'd find out anyway.</p>
 
-    <div class="board">
+    <div class="board stag">
       <div class="panel yes">
         <h3>Confirmed</h3>
         <ul>
-          <li><span>The domain. You're looking at it. <em>Huge milestone.</em></span></li>
-          <li><span>The group chat. Extremely active. Mostly memes.</span></li>
-          <li><span>Dota night. Fridays. Non-negotiable. Investors will adjust.</span></li>
-          <li><span>The work ethic. Excellent, especially after the laning phase.</span></li>
+          <li><span>What we do. AI and data science for business problems. <em>Locked in.</em></span></li>
+          <li><span>The lead mechanic. A working data scientist, not a slide deck.</span></li>
+          <li><span>One live machine. Job #001 is up and searchable. Poke it.</span></li>
+          <li><span>The hunger. New shops fight hardest for their first jobs. That's you, getting overserved.</span></li>
           <li><span>The name. <em>Talyer:</em> the neighborhood shop where things get fixed.</span></li>
         </ul>
       </div>
       <div class="panel tbd">
         <h3>Still drafting</h3>
         <ul>
-          <li><span>The product.</span></li>
-          <li><span>The market.</span></li>
-          <li><span>The business model.</span></li>
-          <li><span>The pitch deck. (That was supposed to be mid's job.)</span></li>
-          <li><span>Who actually plays mid.</span></li>
+          <li><span>The client wall. Empty and waiting. Your logo would look great up there.</span></li>
+          <li><span>The fancy office. We have laptops, resolve, and very good internet.</span></li>
+          <li><span>The 47-slide capability deck. We'd rather just fix your thing.</span></li>
+          <li><span>Our poker faces when the first big job order lands.</span></li>
         </ul>
       </div>
     </div>
@@ -540,21 +602,12 @@
 </section>
 
 <!-- ============ CTA ============ -->
-<section class="cta" aria-labelledby="cta-heading">
+<section class="cta" id="contact" aria-labelledby="cta-heading">
   <div class="wrap reveal">
-    <h2 id="cta-heading">We'll pick a lane soon.</h2>
-    <p>Drop your email and you'll be the first to know what talyer.dev actually is — right after we do.</p>
-    <form id="queue-form" action="https://formspree.io/f/xykadwnl" method="post" novalidate>
-      <label for="email" style="position:absolute;left:-9999px;">Email address</label>
-      <input id="email" type="email" name="email" placeholder="you@somewhere.com" required />
-      <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true" autocomplete="off" />
-      <button type="submit">Queue up</button>
-    </form>
-    <p class="error" id="queue-error" role="alert">Server disconnected. Classic. Try again?</p>
-    <div class="done" id="queue-done" role="status">
-      GG. You're in the lobby. We'll ping you the moment we pick a lane.
-      (No spam. We don't even have a product to spam you about.)
-    </div>
+    <h2 id="cta-heading">Bring us your problem.</h2>
+    <p>Describe it the way you'd describe a weird engine noise: in plain words. We'll look under the hood, tell you honestly whether data or AI can fix it, and quote what it takes. The diagnosis costs nothing.</p>
+    <a class="btn" href="mailto:joshuac@talyer.dev?subject=Job%20order%3A%20%5Bdescribe%20the%20noise%20here%5D">Open a job order</a>
+    <p class="cta-alt">or write us directly at <a href="mailto:joshuac@talyer.dev">joshuac@talyer.dev</a>.<br/>A human reads it fast. We're new, remember.</p>
   </div>
 </section>
 </main>
@@ -580,33 +633,187 @@
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // Email capture — posts to Formspree (form also submits natively if JS is off).
-  const form = document.getElementById('queue-form');
-  const queueError = document.getElementById('queue-error');
-  form.addEventListener('submit', async (ev)=>{
-    ev.preventDefault();
-    const email = document.getElementById('email');
-    if(!email.value || !email.checkValidity()){ email.focus(); return; }
-    const button = form.querySelector('button');
-    const buttonLabel = button.textContent;
-    button.disabled = true;
-    button.textContent = 'QUEUEING...';
-    queueError.style.display = 'none';
-    try{
-      const res = await fetch(form.action, {
-        method:'POST',
-        headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body:JSON.stringify({email: email.value})
-      });
-      if(!res.ok) throw new Error('Formspree responded ' + res.status);
-      form.style.display = 'none';
-      document.getElementById('queue-done').style.display = 'block';
-    }catch(err){
-      button.disabled = false;
-      button.textContent = buttonLabel;
-      queueError.style.display = 'block';
+  // ---------- 3D shop-floor backdrop (three.js r128) ----------
+  // Lazy-loaded after first paint. Skipped entirely under reduced motion or
+  // if WebGL fails; the static painted background is the fallback.
+  (function(){
+    const motionQuery = matchMedia('(prefers-reduced-motion: reduce)');
+    if(motionQuery.matches) return;
+
+    let booted = false;
+    function boot(){
+      if(booted) return; booted = true;
+      const s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+      s.onload = ()=>{ try{ init(); }catch(err){ /* static fallback */ } };
+      document.head.appendChild(s);
     }
-  });
+    function whenIdle(){
+      if('requestIdleCallback' in window) requestIdleCallback(boot, {timeout:2500});
+      else setTimeout(boot, 700);
+    }
+    if(document.readyState === 'complete') whenIdle();
+    else addEventListener('load', whenIdle);
+
+    function init(){
+      const canvas = document.createElement('canvas');
+      canvas.id = 'bg3d';
+      canvas.setAttribute('aria-hidden','true');
+      let renderer;
+      try{
+        renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true, powerPreference:'low-power'});
+      }catch(err){ return; }
+      document.body.prepend(canvas);
+
+      let vw = innerWidth, vh = innerHeight;
+      const mobile = vw < 720;
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+      renderer.setSize(vw, vh);
+
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.Fog(0x141A22, 9, 28);
+      const camGroup = new THREE.Group();
+      const camera = new THREE.PerspectiveCamera(42, vw/vh, .1, 40);
+      camera.position.z = 11;
+      camGroup.add(camera);
+      scene.add(camGroup);
+
+      scene.add(new THREE.AmbientLight(0x8FA0B4, .8));
+      const key = new THREE.DirectionalLight(0xFFF3DC, 1.1);
+      key.position.set(3, 4, 6);
+      scene.add(key);
+
+      // Shop-floor hardware in the sign palette: brass, steel, enamel, a touch of red.
+      const MAT = {
+        brass:  new THREE.MeshStandardMaterial({color:0xC9962F, metalness:.55, roughness:.45, flatShading:true}),
+        steel:  new THREE.MeshStandardMaterial({color:0x7A8A99, metalness:.5,  roughness:.5,  flatShading:true}),
+        red:    new THREE.MeshStandardMaterial({color:0xA83227, metalness:.35, roughness:.55, flatShading:true}),
+        enamel: new THREE.MeshStandardMaterial({color:0xD9D2C0, metalness:.15, roughness:.7,  flatShading:true}),
+        dark:   new THREE.MeshStandardMaterial({color:0x141A22, metalness:.4,  roughness:.8,  flatShading:true})
+      };
+      const mats = [MAT.brass, MAT.steel, MAT.steel, MAT.enamel, MAT.red];
+
+      function hexNut(mat){
+        const g = new THREE.Group();
+        g.add(new THREE.Mesh(new THREE.CylinderGeometry(1, 1, .42, 6), mat));
+        const hole = new THREE.Mesh(new THREE.CylinderGeometry(.45, .45, .46, 12), MAT.dark);
+        g.add(hole);
+        return g;
+      }
+      function bolt(mat){
+        const g = new THREE.Group();
+        g.add(new THREE.Mesh(new THREE.CylinderGeometry(.55, .55, .36, 6), mat));
+        const shaft = new THREE.Mesh(new THREE.CylinderGeometry(.17, .17, 1.6, 10), mat);
+        shaft.position.y = -.95;
+        g.add(shaft);
+        return g;
+      }
+      function washer(mat){
+        const g = new THREE.Group();
+        g.add(new THREE.Mesh(new THREE.TorusGeometry(.62, .17, 8, 26), mat));
+        return g;
+      }
+      function gear(mat){
+        const g = new THREE.Group();
+        const core = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, .34, 20), mat);
+        core.rotation.x = Math.PI/2;
+        g.add(core);
+        const toothGeo = new THREE.BoxGeometry(.34, .3, .3);
+        for(let i = 0; i < 9; i++){
+          const a = i/9 * Math.PI*2;
+          const t = new THREE.Mesh(toothGeo, mat);
+          t.position.set(Math.cos(a)*1.1, Math.sin(a)*1.1, 0);
+          t.rotation.z = a;
+          g.add(t);
+        }
+        const hub = new THREE.Mesh(new THREE.CylinderGeometry(.34, .34, .5, 6), MAT.dark);
+        hub.rotation.x = Math.PI/2;
+        g.add(hub);
+        return g;
+      }
+      const makers = [hexNut, bolt, washer, gear];
+
+      const DIST = 8;           // world units of camera travel per viewport scrolled
+      const pieces = [];
+      function addPiece(obj, x, y, z, s, spin){
+        obj.position.set(x, y, z);
+        obj.scale.setScalar(s);
+        obj.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
+        pieces.push({obj, rs:spin});
+        scene.add(obj);
+      }
+
+      // Two hero feature pieces, visible on load.
+      addPiece(gear(MAT.brass),  mobile ? -3.4 : -5.4,  .8, mobile ? -6 : -3.5, mobile ? 1.1 : 1.6, {x:.05, y:.12});
+      addPiece(bolt(MAT.steel),  mobile ?  3.4 :  5.2, -2.4, mobile ? -6.5 : -4,  mobile ? .9 : 1.3,  {x:.1,  y:.07});
+
+      // Scattered hardware down the length of the page.
+      const pages = Math.max(4, document.body.scrollHeight / vh);
+      const count = mobile ? 10 : 20;
+      for(let i = 0; i < count; i++){
+        const r = Math.random();
+        const side = i % 2 === 0 ? -1 : 1;
+        const x = side * (mobile ? 2.4 + Math.random()*1.6 : 3.4 + Math.random()*2.4);
+        const y = 1 - Math.random() * (pages - .5) * DIST;
+        const z = -(2.5 + Math.random()*6.5);
+        const s = .45 + Math.pow(r, 1.5) * .9;
+        const maker = makers[i % makers.length];
+        const mat = mats[Math.floor(Math.random()*mats.length)];
+        addPiece(maker(mat), x, y, z, s, {x:(Math.random()-.5)*.4, y:(Math.random()-.5)*.4});
+      }
+
+      // Scroll (lerp-smoothed) + cursor parallax.
+      let smooth = scrollY, parX = 0, parY = 0, curX = 0, curY = 0, raf = 0;
+      if(matchMedia('(pointer:fine)').matches){
+        addEventListener('pointermove', (e)=>{
+          curX = e.clientX/vw - .5;
+          curY = e.clientY/vh - .5;
+        }, {passive:true});
+      }
+      const clock = new THREE.Clock();
+      function tick(){
+        raf = requestAnimationFrame(tick);
+        const dt = Math.min(clock.getDelta(), .05);
+        smooth += (scrollY - smooth) * Math.min(1, dt*5);
+        const drag = (scrollY - smooth) / vh;   // scroll velocity proxy
+        camera.position.y = -(smooth / vh) * DIST;
+        parX += (curX*1.3 - parX) * Math.min(1, dt*4);
+        parY += (-curY*.7 - parY) * Math.min(1, dt*4);
+        camGroup.position.x = parX;
+        camGroup.position.y = parY;
+        for(const p of pieces){
+          p.obj.rotation.x += p.rs.x * dt;
+          p.obj.rotation.y += p.rs.y * dt;
+          p.obj.rotation.z += drag * dt * .6;
+        }
+        renderer.render(scene, camera);
+      }
+      raf = requestAnimationFrame(tick);
+
+      // Pause offscreen/backgrounded; resume on return.
+      document.addEventListener('visibilitychange', ()=>{
+        if(document.hidden){ cancelAnimationFrame(raf); raf = 0; }
+        else if(!raf){ clock.getDelta(); raf = requestAnimationFrame(tick); }
+      });
+
+      addEventListener('resize', ()=>{
+        vw = innerWidth; vh = innerHeight;
+        camera.aspect = vw/vh;
+        camera.updateProjectionMatrix();
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+        renderer.setSize(vw, vh);
+      });
+
+      // If the user switches reduced motion on, tear the whole thing down.
+      motionQuery.addEventListener('change', (e)=>{
+        if(e.matches){
+          cancelAnimationFrame(raf);
+          renderer.dispose();
+          canvas.remove();
+        }
+      });
+    }
+  })();
 </script>
 </body>
 </html>
